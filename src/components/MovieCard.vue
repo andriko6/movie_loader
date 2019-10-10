@@ -98,6 +98,7 @@
 
 <script>
   import axios from 'axios';
+  import {API_KEY, BASE_PATH} from "../const";
   export default {
     props: {
       id: {
@@ -123,7 +124,7 @@
       }
     },
     created() {
-      axios.get(`https://api.themoviedb.org/3/movie/${this.id}$?api_key=dcbd1696d5013a8648cd32b111c5f819&language=en-US`)
+      axios.get(`${BASE_PATH}/3/movie/${this.id}$?api_key=${API_KEY}&language=en-US`)
           .then(({ data }) => { this.movie = data;
           });
     }
