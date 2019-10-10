@@ -47,6 +47,7 @@
 </template>
 
 <script>
+  import slugify from 'slugify';
   export default {
     props: {
       movie: {
@@ -60,7 +61,8 @@
     },
     methods: {
       openCard() {
-        this.$router.push({ name: 'moviecard', params: { film: this.movie } })
+        const slug = slugify(this.movie.title);
+        this.$router.push({ name: 'movie', params: { id: this.movie.id, slug }})
       }
     },
   };

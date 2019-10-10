@@ -10,9 +10,10 @@ Vue.config.productionTip = false;
 Vue.use(VueRouter);
 
 const router = new VueRouter({
+  mode: "history",
   routes: [
     { path: '/', component: MovieCardsTable, },
-    { path: '/moviecard', name: 'moviecard', props: true, component: MovieCard },
+    { path: '/movie/:id/:slug', name: 'movie', props: true, component: MovieCard },
   ],
 });
 

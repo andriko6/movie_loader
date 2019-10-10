@@ -1,5 +1,6 @@
 <template>
   <v-content
+    v-if="movie.id"
     class="pt-0 ml-2"
   >
     <v-row>
@@ -99,8 +100,8 @@
   import axios from 'axios';
   export default {
     props: {
-      film: {
-        type: Object,
+      id: {
+        type: [Number, String],
       },
     },
     data: () => ({
@@ -111,10 +112,10 @@
       showPicture() {
         return `https://image.tmdb.org/t/p/w500_and_h282_face${this.movie.poster_path}`;
       },
-
       showDate() {
-        return this.movie.release_date.substring(0, 4)
+        return this.movie.release_date.substring(0, 4);
       },
+
     },
     methods: {
       goBack() {
@@ -122,7 +123,7 @@
       }
     },
     created() {
-      axios.get(`https://api.themoviedb.org/3/movie/${this.film.id}$?api_key=dcbd1696d5013a8648cd32b111c5f819&language=en-US`)
+      axios.get(`https://api.themoviedb.org/3/movie/${this.id}$?api_key=dcbd1696d5013a8648cd32b111c5f819&language=en-US`)
           .then(({ data }) => { this.movie = data;
           });
     }
